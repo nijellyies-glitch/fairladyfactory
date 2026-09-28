@@ -1,2 +1,2 @@
 - Vercel: project 'fairladyfactory' (team sol), git-linked, production branch main
-- Redeploy check
+- Rebuild check 3
