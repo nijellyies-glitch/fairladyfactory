@@ -1,0 +1,18 @@
+{
+  "name": "fairlady-web-site",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "FAIRLADYFACTORY — classic JDM body parts site (static pages) + Vercel AI Gateway example",
+  "scripts": {
+    "ai-example": "tsx ai/index.ts"
+  },
+  "dependencies": {
+    "ai": "^7.0.111",
+    "dotenv": "^18.0.3"
+  },
+  "devDependencies": {
+    "@types/node": "^22",
+    "tsx": "^4.23.13"
+  }
+}

@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FAIRLADY FACTORY — Classic Car Body Parts</title>
+<meta name="description" content="FAIRLADY FACTORY — SEMA-grade classic car body panels. Datsun 240Z, Ford Escort Mk2, VW T1. Carbon, steel, FRP. Street-legal heritage, garage-grade fitment.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20width='64'%20height='64'%20rx='10'%20fill='%2315191f'/%3E%3Cpath%20d='M14%2046V20h6l18%2019V20h6v26h-6L20%2027v19z'%20fill='%23ff7a1a'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --asphalt:#0d0f13;
+    --asphalt-2:#14181f;
+    --asphalt-3:#1b2028;
+    --asphalt-4:#232a34;
+    --steel:#8b95a3;
+    --steel-2:#5b6470;
+    --cream:#e9e6df;
+    --oil:#ff7a1a;       /* molten orange */
+    --oil-dk:#e85f00;
+    --acid:#e8ff4a;      /* acid yellow highlight */
+    --ok:#3ad06b;
+    --line:rgba(255,255,255,.09);
+    --line-2:rgba(255,255,255,.16);
+    --font-display:'Big Shoulders Display','Arial Narrow',sans-serif;
+    --font-body:'Inter',system-ui,sans-serif;
+    --font-mono:'IBM Plex Mono',ui-monospace,monospace;
+    --maxw:1280px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--asphalt);color:var(--cream);font-family:var(--font-body);line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
+  ul{list-style:none}
+  button{font-family:inherit;cursor:pointer;background:none;border:none;color:inherit}
+  :focus-visible{outline:2px solid var(--oil);outline-offset:2px;border-radius:2px}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px}
+
+  /* ============ TOP STRIP ============ */
+  .topstrip{background:var(--asphalt-2);border-bottom:1px solid var(--line);font-family:var(--font-mono);font-size:11px;color:var(--steel);letter-spacing:.08em;}
+  .topstrip .wrap{display:flex;justify-content:space-between;align-items:center;height:36px;gap:14px}
+  .topstrip .marq{flex:1;overflow:hidden;white-space:nowrap;color:var(--steel-2)}
+  .topstrip .marq span{animation:marq 22s linear infinite;display:inline-block}
+  .topstrip b{color:var(--oil);font-weight:600}
+  .topstrip .right{display:flex;gap:18px;align-items:center;flex-shrink:0}
+  .topstrip a:hover{color:var(--oil)}
+  @keyframes marq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+  /* ============ HEADER ============ */
+  .header{position:sticky;top:0;z-index:80;background:rgba(13,15,19,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+  .header .wrap{display:flex;align-items:center;height:74px;gap:22px}
+  .brand{display:flex;align-items:center;gap:12px;flex-shrink:0}
+  .brand .mark{width:42px;height:42px;border-radius:8px;background:var(--asphalt-3);display:grid;place-items:center;border:1px solid var(--line-2);box-shadow:inset 0 0 0 1px rgba(255,122,26,.25)}
+  .brand .mark svg{width:24px;height:24px;stroke:var(--oil)}
+  .brand-name{line-height:1;display:flex;flex-direction:column}
+  .brand-name b{font-family:var(--font-display);font-weight:900;font-size:24px;letter-spacing:.03em;text-transform:uppercase;color:#fff}
+  .brand-name b i{font-style:normal;color:var(--oil)}
+  .brand-name small{font-family:var(--font-mono);font-size:9px;letter-spacing:.34em;text-transform:uppercase;color:var(--steel);margin-top:4px}
+  .nav{display:flex;align-items:center;gap:2px;margin-left:auto}
+  .nav a{font-family:var(--font-display);font-weight:700;font-size:15px;letter-spacing:.05em;text-transform:uppercase;color:var(--steel);padding:9px 13px;border-radius:5px;transition:.15s;position:relative}
+  .nav a:hover{color:#fff}
+  .nav a.active{color:var(--oil)}
+  .nav a.active::after{content:"";position:absolute;left:13px;right:13px;bottom:2px;height:2px;background:var(--oil)}
+  .head-cta{display:flex;align-items:center;gap:10px;flex-shrink:0}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;font-family:var(--font-display);font-weight:800;
+    letter-spacing:.06em;text-transform:uppercase;font-size:15px;padding:11px 18px;border-radius:5px;transition:.15s;border:1px solid transparent;
+  }
+  .btn-oil{background:var(--oil);color:#14100a;border-color:var(--oil)}
+  .btn-oil:hover{background:var(--oil-dk);color:#fff}
+  .btn-ghost{border-color:var(--line-2);color:var(--cream)}
+  .btn-ghost:hover{border-color:var(--oil);color:var(--oil)}
+  .hamburger{display:none;width:40px;height:40px;border:1px solid var(--line-2);border-radius:6px;place-items:center}
+  .hamburger svg{width:20px;height:20px;stroke:var(--cream)}
+
+  /* ============ HERO ============ */
+  .hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+  .hero .grill{
+    position:absolute;inset:0;opacity:.5;pointer-events:none;
+    background:
+      repeating-linear-gradient(135deg,transparent 0 10px,transparent 10px 0),
+      repeating-linear-gradient(0deg,rgba(255,255,255,.03) 0 1px,transparent 1px 46px),
+      repeating-linear-gradient(90deg,rgba(255,255,255,.03) 0 1px,transparent 1px 46px);
+    -webkit-mask-image:radial-gradient(900px 600px at 70% 40%,#000 30%,transparent 75%);mask-image:radial-gradient(900px 600px at 70% 40%,#000 30%,transparent 75%);
+  }
+  .hero .hazard{position:absolute;top:0;left:0;right:0;height:8px;background:repeating-linear-gradient(90deg,var(--oil) 0 26px,transparent 26px 52px)}
+  .hero .wrap{position:relative;z-index:2;padding:78px 22px 70px;display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:center}
+  .eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:var(--font-mono);font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--oil);margin-bottom:18px}
+  .eyebrow::before{content:"";width:32px;height:2px;background:var(--oil)}
+  .hero h1{font-family:var(--font-display);font-weight:900;text-transform:uppercase;font-size:clamp(52px,8vw,104px);line-height:.86;letter-spacing:-.01em;color:#fff}
+  .hero h1 em{font-style:normal;color:var(--oil)}
+  .hero h1 .ghost{color:transparent;-webkit-text-stroke:2px var(--steel-2)}
+  .hero .sub{margin-top:22px;max-width:460px;color:var(--steel);font-size:15px}
+  .hero .sub b{color:var(--cream);font-weight:600}
+  .hero .stats{margin-top:30px;display:flex;gap:26px;flex-wrap:wrap}
+  .hero .stat{display:flex;flex-direction:column;gap:2px}
+  .hero .stat b{font-family:var(--font-display);font-weight:900;font-size:34px;color:var(--acid);line-height:1}
+  .hero .stat span{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--steel-2)}
+  .hero .flag{position:relative;border:1px solid var(--line-2);border-radius:10px;overflow:hidden;background:var(--asphalt-2);box-shadow:0 30px 70px -30px rgba(0,0,0,.8)}
+  .hero .flag::after{content:"";position:absolute;inset:0;background:linear-gradient(160deg,rgba(255,122,26,.10),transparent 55%)}
+  .hero .flag img{width:100%;aspect-ratio:16/10;object-fit:cover}
+  .hero .flag .plate{position:absolute;left:14px;bottom:14px;z-index:2;background:rgba(10,12,16,.82);border:1px solid var(--line-2);border-radius:6px;padding:10px 14px;font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;color:var(--cream);backdrop-filter:blur(6px)}
+  .hero .flag .plate b{color:var(--oil);font-weight:600}
+  .hero .flag .tag-hz{position:absolute;top:14px;left:14px;z-index:2;background:var(--acid);color:#131309;font-family:var(--font-display);font-weight:800;text-transform:uppercase;letter-spacing:.08em;font-size:12px;padding:4px 10px;border-radius:4px}
+
+  /* ============ TICKER ============ */
+  .ticker{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--asphalt-2);overflow:hidden}
+  .ticker .track{display:flex;white-space:nowrap;animation:tick 34s linear infinite;font-family:var(--font-display);font-weight:800;text-transform:uppercase;letter-spacing:.06em;font-size:19px;color:var(--steel-2)}
+  .ticker .track span{padding:13px 30px;display:inline-flex;align-items:center;gap:14px}
+  .ticker .track i{font-style:normal;color:var(--oil)}
+  @keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+  /* ============ SECTION ============ */
+  .section{padding:70px 0}
+  .sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:34px;flex-wrap:wrap}
+  .sec-head .k{font-family:var(--font-mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--oil)}
+  .sec-head h2{font-family:var(--font-display);font-weight:900;text-transform:uppercase;font-size:clamp(34px,4.4vw,54px);line-height:.9;color:#fff;margin-top:8px}
+  .sec-head h2 .xh{color:transparent;-webkit-text-stroke:1.5px var(--steel-2)}
+  .sec-head p{color:var(--steel);font-size:14px;max-width:420px}
+
+  /* ============ MODEL CARDS ============ */
+  .models{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .mcard{position:relative;overflow:hidden;border:1px solid var(--line);border-radius:10px;background:var(--asphalt-2);transition:.18s;display:flex;flex-direction:column}
+  .mcard:hover{transform:translateY(-4px);border-color:var(--oil);box-shadow:0 24px 50px -24px rgba(255,122,26,.35)}
+  .mcard .ph{position:relative;aspect-ratio:16/10;overflow:hidden;background:var(--asphalt-3)}
+  .mcard .ph img{width:100%;height:100%;object-fit:cover;transition:.4s}
+  .mcard:hover .ph img{transform:scale(1.05)}
+  .mcard .no{position:absolute;top:12px;left:12px;z-index:2;background:rgba(10,12,16,.85);color:var(--acid);font-family:var(--font-display);font-weight:900;font-size:30px;line-height:1;padding:6px 12px;border-radius:6px;border:1px solid var(--line-2)}
+  .mcard .body{padding:20px;display:flex;flex-direction:column;flex:1}
+  .mcard .brandlbl{font-family:var(--font-mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--oil)}
+  .mcard h3{font-family:var(--font-display);font-weight:900;text-transform:uppercase;font-size:30px;line-height:.92;color:#fff;margin:6px 0}
+  .mcard .count{display:flex;gap:8px;align-items:center;margin-bottom:14px}
+  .mcard .count b{font-family:var(--font-mono);font-size:13px;color:var(--acid)}
+  .mcard .count span{font-family:var(--font-mono);font-size:11px;color:var(--steel-2)}
+  .mcard .tags{display:flex;flex-wrap:wrap;gap:6px}
+  .mcard .tags span{font-family:var(--font-mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;border:1px solid var(--line-2);border-radius:3px;padding:3px 7px;color:var(--steel)}
+
+  /* ============ CATALOGUE ============ */
+  .toolbar{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:24px;padding:14px 16px;border:1px solid var(--line);border-radius:8px;background:var(--asphalt-2)}
+  .toolbar .res{font-family:var(--font-mono);font-size:12px;color:var(--steel);letter-spacing:.06em;text-transform:uppercase}
+  .toolbar .res b{color:var(--acid);font-weight:600}
+  .chips{display:flex;gap:8px;flex-wrap:wrap}
+  .chip{font-family:var(--font-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;border:1px solid var(--line-2);border-radius:30px;padding:6px 13px;color:var(--steel);transition:.13s}
+  .chip:hover{border-color:var(--oil);color:var(--oil)}
+  .chip.on{background:var(--oil);border-color:var(--oil);color:#14100a;font-weight:600}
+  .toolbar .sp{flex:1}
+  .toolbar .sort{display:flex;align-items:center;gap:8px}
+  .toolbar .sort label{font-family:var(--font-mono);font-size:11px;text-transform:uppercase;color:var(--steel-2)}
+  .toolbar select{font-family:var(--font-body);font-size:13px;padding:7px 32px 7px 10px;border:1px solid var(--line-2);border-radius:5px;background:var(--asphalt-3) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%238b95a3' fill='none' stroke-width='1.5'/%3E%3C/svg%3E") no-repeat right 10px center;appearance:none;-webkit-appearance:none;color:var(--cream)}
+
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(252px,1fr));gap:16px}
+  .pcard{border:1px solid var(--line);border-radius:8px;background:var(--asphalt-2);overflow:hidden;display:flex;flex-direction:column;transition:.16s;position:relative}
+  .pcard:hover{transform:translateY(-3px);border-color:var(--line-2);box-shadow:0 20px 40px -22px rgba(0,0,0,.7)}
+  .pcard .media{position:relative;aspect-ratio:16/10;background:var(--asphalt-3);overflow:hidden}
+  .pcard .media img{width:100%;height:100%;object-fit:cover;background:var(--asphalt-3);transition:.35s}
+  .pcard:hover .media img{transform:scale(1.06)}
+  .pcard .media::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(20,24,31,.6))}
+  .pcard .srno{position:absolute;top:10px;left:10px;z-index:2;background:rgba(10,12,16,.85);color:var(--acid);font-family:var(--font-display);font-weight:900;font-size:20px;padding:3px 9px;border-radius:4px;border:1px solid var(--line-2)}
+  .pcard .parttag{position:absolute;top:10px;right:10px;z-index:2;background:rgba(255,122,26,.92);color:#14100a;font-family:var(--font-mono);font-size:9.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;border-radius:3px}
+  .pcard .body{padding:14px 15px 16px;display:flex;flex-direction:column;flex:1}
+  .pcard .meta{display:flex;justify-content:space-between;gap:8px;margin-bottom:6px;font-family:var(--font-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase}
+  .pcard .meta .model{color:var(--oil);font-weight:600}
+  .pcard .meta .code{color:var(--steel-2)}
+  .pcard h4{font-family:var(--font-display);font-weight:800;text-transform:uppercase;font-size:19px;line-height:1.02;color:#fff;letter-spacing:.01em}
+  .pcard .pcode{font-family:var(--font-mono);font-size:10.5px;color:var(--steel-2);margin-top:5px;letter-spacing:.04em}
+  .pcard .foot{margin-top:auto;padding-top:12px;display:flex;align-items:center;justify-content:space-between;gap:8px}
+  .pcard .price{font-family:var(--font-display);font-weight:900;font-size:22px;color:var(--acid)}
+  .pcard .price small{font-size:12px;color:var(--steel-2);font-weight:600;margin-right:2px}
+  .pcard .qbtn{background:var(--asphalt-4);color:var(--cream);font-family:var(--font-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;padding:8px 12px;border-radius:4px;transition:.13s}
+  .pcard .qbtn:hover{background:var(--oil);color:#14100a}
+  .empty{grid-column:1/-1;text-align:center;padding:60px 20px;color:var(--steel);border:1px dashed var(--line-2);border-radius:8px;background:var(--asphalt-2)}
+  .empty b{display:block;font-family:var(--font-display);font-size:26px;text-transform:uppercase;color:var(--cream);margin-bottom:6px}
+
+  /* ============ SEMA BAND ============ */
+  .sema{background:linear-gradient(160deg,var(--asphalt-2),var(--asphalt));border-top:1px solid var(--line);border-bottom:1px solid var(--line);position:relative;overflow:hidden}
+  .sema .wrap{padding:72px 22px;display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:center}
+  .sema .bigno{font-family:var(--font-display);font-weight:900;font-size:clamp(120px,20vw,220px);line-height:.8;color:transparent;-webkit-text-stroke:2px var(--oil);opacity:.35;user-select:none}
+  .sema h2{font-family:var(--font-display);font-weight:900;text-transform:uppercase;font-size:clamp(30px,4vw,50px);line-height:.9;color:#fff;margin:-10px 0 16px}
+  .sema h2 em{font-style:normal;color:var(--acid)}
+  .sema p{color:var(--steel);font-size:14.5px;max-width:440px}
+  .sema .list{margin-top:22px;display:flex;flex-direction:column;gap:12px}
+  .sema .list li{display:flex;gap:12px;align-items:flex-start;color:var(--cream);font-size:14.5px}
+  .sema .list li svg{width:18px;height:18px;stroke:var(--oil);flex-shrink:0;margin-top:2px}
+  .sema .cta{margin-top:26px;display:flex;gap:12px;flex-wrap:wrap}
+
+  /* ============ NEWS ============ */
+  .news{background:var(--asphalt-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .news-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:34px;flex-wrap:wrap}
+  .news-head h2{font-family:var(--font-display);font-weight:900;text-transform:uppercase;font-size:clamp(34px,4.4vw,54px);line-height:.9;color:#fff;margin-top:8px}
+  .news-head h2 .xh{color:transparent;-webkit-text-stroke:1.5px var(--steel-2)}
+  .news-head .k{font-family:var(--font-mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--oil)}
+  .news-head .yr{font-family:var(--font-display);font-weight:900;font-size:clamp(30px,4vw,48px);color:transparent;-webkit-text-stroke:1.5px var(--oil);line-height:.9}
+  .news-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .ncard{border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--asphalt-3);transition:.18s;display:flex;flex-direction:column;position:relative}
+  .ncard:hover{transform:translateY(-4px);border-color:var(--oil);box-shadow:0 24px 50px -24px rgba(255,122,26,.35)}
+  .ncard .ph{position:relative;aspect-ratio:16/10;overflow:hidden;background:var(--asphalt-4)}
+  .ncard .ph svg{width:100%;height:100%}
+  .ncard .ph::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(20,24,31,.5))}
+  .ncard .award{position:absolute;top:12px;left:12px;z-index:2;background:var(--acid);color:#131309;font-family:var(--font-display);font-weight:800;text-transform:uppercase;letter-spacing:.08em;font-size:11px;padding:4px 9px;border-radius:4px}
+  .ncard .yr-tag{position:absolute;top:12px;right:12px;z-index:2;background:rgba(10,12,16,.85);border:1px solid var(--line-2);color:var(--cream);font-family:var(--font-mono);font-size:10px;letter-spacing:.1em;padding:4px 8px;border-radius:4px}
+  .ncard .body{padding:18px;display:flex;flex-direction:column;flex:1}
+  .ncard .cat{font-family:var(--font-mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--oil);margin-bottom:6px}
+  .ncard h3{font-family:var(--font-display);font-weight:800;text-transform:uppercase;font-size:24px;line-height:.95;color:#fff}
+  .ncard p{color:var(--steel);font-size:13.5px;margin:10px 0 14px}
+  .ncard .more{font-family:var(--font-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--steel-2);margin-top:auto}
+  .ncard:hover .more{color:var(--oil)}
+
+  /* ============ FOOTER ============ */
+  .footer{background:var(--asphalt-2);border-top:1px solid var(--line)}
+  .footer .wrap{padding:48px 22px 30px;display:grid;grid-template-columns:1.5fr 1fr 1fr 1.3fr;gap:36px}
+  .footer h4{font-family:var(--font-display);font-weight:800;font-size:14px;letter-spacing:.12em;text-transform:uppercase;color:#fff;margin-bottom:16px}
+  .footer a{display:block;padding:4px 0;color:var(--steel);font-size:13.5px;transition:.13s}
+  .footer a:hover{color:var(--oil)}
+  .footer .about p{margin-top:14px;color:var(--steel-2);font-size:12.5px;max-width:280px}
+  .footer .social{display:flex;gap:10px;margin-top:18px}
+  .footer .social a{width:36px;height:36px;border:1px solid var(--line-2);border-radius:50%;display:grid;place-items:center;padding:0}
+  .footer .social svg{width:15px;height:15px;stroke:#fff;fill:none;stroke-width:1.6}
+  .footer .social a:hover{border-color:var(--oil)}
+  .footer .contact li{display:flex;gap:10px;padding:4px 0;color:var(--steel);font-size:13px;align-items:flex-start}
+  .footer .contact svg{width:15px;height:15px;stroke:var(--oil);flex-shrink:0;margin-top:3px}
+  .footer-bottom{border-top:1px solid var(--line)}
+  .footer-bottom .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-top:18px;padding-bottom:18px;font-family:var(--font-mono);font-size:11px;letter-spacing:.06em;color:var(--steel-2)}
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width:980px){
+    .hero .wrap{grid-template-columns:1fr;padding-top:52px}
+    .hero .flag{max-width:520px}
+    .models{grid-template-columns:1fr 1fr}
+    .news-grid{grid-template-columns:1fr 1fr}
+    .sema .wrap{grid-template-columns:1fr}
+    .nav{display:none;position:fixed;inset:74px 0 auto;background:var(--asphalt-2);border-bottom:1px solid var(--line);flex-direction:column;align-items:stretch;padding:12px;gap:2px;z-index:90}
+    .nav.open{display:flex}
+    .nav a{padding:14px}
+    .head-cta{margin-left:auto}
+    .footer .wrap{grid-template-columns:1fr 1fr;gap:28px}
+  }
+  @media (max-width:560px){
+    .models{grid-template-columns:1fr}
+    .news-grid{grid-template-columns:1fr}
+    .topstrip .right a:nth-child(2){display:none}
+    .footer .wrap{grid-template-columns:1fr}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important}
+    html{scroll-behavior:auto}
+  }
+</style>
+</head>
+<body>
+
+<!-- TOP STRIP -->
+<div class="topstrip">
+  <div class="wrap">
+    <div class="marq"><span><b>FAIRLADY FACTORY</b> · 240Z · ESCORT MK2 · VW T1 &nbsp;&nbsp; SELLING SEMA-GRADE BODY PANELS WORLDWIDE &nbsp;&nbsp; OEM / ODM WELCOME &nbsp;&nbsp;&nbsp; <b>FAIRLADY FACTORY</b> · 240Z · ESCORT MK2 · VW T1 &nbsp;&nbsp; SELLING SEMA-GRADE BODY PANELS WORLDWIDE &nbsp;&nbsp; OEM / ODM WELCOME &nbsp;&nbsp;&nbsp;</span></div>
+    <div class="right">
+      <a href="#">info@fairladyfactory.com</a>
+      <a href="#">+86 571 8888 6666</a>
+      <a href="#">EN</a>
+    </div>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="wrap">
+    <a class="brand" href="#top">
+      <span class="mark"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 18V6h2l7 8V6h2v12h-2l-7-8v8z"/><path d="M18 6h3M18 18h3"/></svg></span>
+      <span class="brand-name">
+        <b>Fairlady<i>Factory</i></b>
+        <small>Classic Body Parts</small>
+      </span>
+    </a>
+    <nav class="nav" id="nav" aria-label="Primary">
+      <a href="fairlady-scroll.html">Story</a>
+      <a href="fairlady-shop.html">Shop</a>
+      <a href="#catalogue" class="active">Catalogue</a>
+      <a href="fairlady-3dscan.html">3D Scan</a>
+      <a href="fairlady-semashow.html">SEMA</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="head-cta">
+      <a class="btn btn-oil" href="#catalogue">Browse Parts</a>
+      <button class="hamburger" id="burger" aria-label="Menu" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hazard"></div>
+  <div class="grill"></div>
+  <div class="wrap">
+    <div>
+      <div class="eyebrow">Est. 2009 · Hangzhou · Ships to 40+ countries</div>
+      <h1>Classic<br>Cars.<br><span class="ghost">Built</span> <em>Back.</em></h1>
+      <p class="sub">Factory-direct body panels for the legends — <b>Datsun 240Z</b>, <b>Ford Escort Mk2</b>, <b>VW T1</b>. Tooled in-house, shipped worldwide. The <b>Fairlady Factory</b> way.</p>
+      <div class="stats">
+        <div class="stat"><b>80</b><span>Parts catalogued</span></div>
+        <div class="stat"><b>3</b><span>Classic lines</span></div>
+        <div class="stat"><b>215</b><span>Product images</span></div>
+      </div>
+    </div>
+    <div class="flag">
+      <img id="heroImg" src="" alt="Featured classic car body part">
+      <span class="tag-hz">SEMA GRAND</span>
+      <div class="plate">PART NO <b id="heroPart">SYC-NS42-04</b> · HOOD · 240Z</div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="track" id="ticker">
+    <span>DATSUN 240Z <i>///</i> HOODS <i>///</i> FENDERS <i>///</i> FLOOR PANS</span>
+    <span>VW T1 <i>///</i> ROOF PANELS <i>///</i> TAIL PANELS</span>
+    <span>FORD ESCORT MK2 <i>///</i> DOORS <i>///</i> CABIN SHELL</span>
+    <span>FACTORY DIRECT <i>///</i> OEM / ODM <i>///</i> SEMA GRADE</span>
+  </div>
+</div>
+
+<!-- MODELS -->
+<section class="section" id="models">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="k">01 — The lineup</div>
+        <h2>Heritage <span class="xh">Reborn</span></h2>
+      </div>
+      <p>Three legends, fully tooled. Every panel is a direct-fit replacement or an aggressive uprated piece — pick your build.</p>
+    </div>
+    <div class="models" id="modelCards"></div>
+  </div>
+</section>
+
+<!-- CATALOGUE -->
+<section class="section" id="catalogue">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="k">02 — The catalogue</div>
+        <h2>Every <span class="xh">Panel</span></h2>
+      </div>
+      <p>Filter by car or part, sort by price. Factory codes included so your shop can order exactly what it needs.</p>
+    </div>
+    <div class="toolbar">
+      <span class="res" id="resultCount">—</span>
+      <div class="chips" id="modelChips"></div>
+      <div class="chips" id="partChips"></div>
+      <div class="sp"></div>
+      <div class="sort">
+        <label for="sort">Sort</label>
+        <select id="sort">
+          <option value="featured">Featured</option>
+          <option value="price-asc">Price: Low → High</option>
+          <option value="price-desc">Price: High → Low</option>
+          <option value="name">Name: A → Z</option>
+        </select>
+      </div>
+    </div>
+    <div class="grid" id="grid" aria-live="polite"></div>
+  </div>
+</section>
+
+<!-- SEMA BAND -->
+<section class="sema" id="sema">
+  <div class="wrap">
+    <div class="bigno">SEMA</div>
+    <div>
+      <h2>Built for the <em>show floor.</em></h2>
+      <p>We manufacture the panels the restorers and the street-builders both ask for — from perfect steel reproductions to widebody FRP. Bring your 3D data, we tool it.</p>
+      <ul class="list">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 12l5 5L20 6"/></svg> Direct-fit OEM replacement steel body panels</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 12l5 5L20 6"/></svg> Widebody aero kits — carbon fiber &amp; FRP</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 12l5 5L20 6"/></svg> US &amp; EU-market fitment, container-ready packaging</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 12l5 5L20 6"/></svg> OEM / ODM program for your own brand</li>
+      </ul>
+      <div class="cta">
+        <a class="btn btn-oil" href="#contact">Start an OEM Project</a>
+        <a class="btn btn-ghost" href="#catalogue">See the Catalogue</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWS: Retro Car of the Year -->
+<section class="section news" id="news">
+  <div class="wrap">
+    <div class="news-head">
+      <div>
+        <div class="k">Fairlady Factory News</div>
+        <h2>Modified Retro Car <span class="xh">of the Year</span></h2>
+      </div>
+      <div class="yr">2026</div>
+    </div>
+    <div class="news-grid">
+      <article class="ncard">
+        <div class="ph"><svg viewBox="0 0 320 200" preserveAspectRatio="xMidYMid slice"><rect width="320" height="200" fill="#232a34"/><path d="M40 150 C38 132 44 120 58 114 L96 106 C130 96 160 88 182 84 C196 87 206 94 214 104 L248 118 C270 122 282 132 288 144 C290 150 287 154 280 155 L258 156 C258 166 250 172 240 172 C230 172 222 166 222 156 L118 156 C118 166 110 172 100 172 C90 172 82 166 82 156 L54 156 C46 156 40 153 40 150 Z" fill="#161c24"/><circle cx="92" cy="156" r="10" fill="#10151b"/><circle cx="252" cy="156" r="10" fill="#10151b"/><circle cx="94" cy="156" r="3" fill="#3b414b"/><circle cx="254" cy="156" r="3" fill="#3b414b"/><path d="M182 88 C194 90 204 96 210 104 L216 110 L180 111 Z" fill="#0a0c10"/><path d="M60 116 L230 116" stroke="#ff7a1a" stroke-width="2" stroke-opacity=".5"/><text x="18" y="182" font-family="monospace" font-size="9" fill="#fff" fill-opacity=".4">240Z // #01</text></svg>
+          <span class="award">Winner</span><span class="yr-tag">2026</span>
+        </div>
+        <div class="body">
+          <div class="cat">Modified · Datsun 240Z</div>
+          <h3>Devil's Z Rebuild</h3>
+          <p>The barn-find 240Z that became our 2026 show car — every panel replaced, every line re-fit. SEMA-grade.</p>
+          <a class="more" href="#catalogue">Read the build →</a>
+        </div>
+      </article>
+      <article class="ncard">
+        <div class="ph"><svg viewBox="0 0 320 200" preserveAspectRatio="xMidYMid slice"><rect width="320" height="200" fill="#1f252d"/><path d="M36 150 C34 130 42 118 58 112 L100 104 C130 96 156 90 176 86 C192 90 204 98 214 110 L252 122 C272 128 284 138 288 148 C290 152 286 156 280 157 L256 157 C256 167 248 173 238 173 C228 173 220 167 220 157 L102 157 C102 167 94 173 84 173 C74 173 66 167 66 157 L48 157 C40 157 36 154 36 150 Z" fill="#151a21"/><circle cx="80" cy="157" r="10" fill="#0f141a"/><circle cx="258" cy="157" r="10" fill="#0f141a"/><circle cx="82" cy="157" r="3" fill="#ff7a1a"/><circle cx="260" cy="157" r="3" fill="#ff7a1a"/><path d="M176 90 C190 94 202 102 210 112 L216 118 L174 119 Z" fill="#0a0c10"/><path d="M54 118 L238 118" stroke="#e8ff4a" stroke-width="2" stroke-opacity=".4"/><text x="18" y="182" font-family="monospace" font-size="9" fill="#fff" fill-opacity=".4">ESCORT MK2 // #02</text></svg>
+          <span class="award">Rally Spec</span><span class="yr-tag">2026</span>
+        </div>
+        <div class="body">
+          <div class="cat">Modified · Ford Escort Mk2</div>
+          <h3>Widebody Escort</h3>
+          <p>A Mk2 Escort pushed to modern rally spec, wearing our widebody kit and a fresh full-steel shell.</p>
+          <a class="more" href="#catalogue">Read the build →</a>
+        </div>
+      </article>
+      <article class="ncard">
+        <div class="ph"><svg viewBox="0 0 320 200" preserveAspectRatio="xMidYMid slice"><rect width="320" height="200" fill="#222830"/><rect x="30" y="120" width="260" height="40" rx="6" fill="#151a21"/><rect x="70" y="70" width="180" height="60" rx="8" fill="#171d25"/><circle cx="70" cy="160" r="14" fill="#0f141a"/><circle cx="250" cy="160" r="14" fill="#0f141a"/><circle cx="72" cy="160" r="4" fill="#ff7a1a"/><circle cx="252" cy="160" r="4" fill="#ff7a1a"/><path d="M110 70 L150 60" stroke="#e8ff4a" stroke-width="2"/><path d="M170 60 L210 70" stroke="#ff7a1a" stroke-width="2"/><text x="18" y="182" font-family="monospace" font-size="9" fill="#fff" fill-opacity=".4">T1 BUS // #03</text></svg>
+          <span class="award">Heritage</span><span class="yr-tag">2026</span>
+        </div>
+        <div class="body">
+          <div class="cat">Restored · VW T1</div>
+          <h3>Bay-window Microbus</h3>
+          <p>The classic T1 brought back with a fresh roof and tail — proof that heritage parts still ship nationwide.</p>
+          <a class="more" href="#catalogue">Read the build →</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer" id="contact">
+  <div class="wrap">
+    <div class="about">
+      <a class="brand" href="#top">
+        <span class="mark"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 18V6h2l7 8V6h2v12h-2l-7-8v8z"/><path d="M18 6h3M18 18h3"/></svg></span>
+        <span class="brand-name"><b style="color:#fff">Fairlady<i style="color:var(--oil)">Factory</i></b></span>
+      </a>
+      <p>Factory and engineering house for classic-car body panels. We design, tool and mold in-house — from one-off prototypes to full production runs.</p>
+      <div class="social">
+        <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="#fff" stroke="none"/></svg></a>
+        <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M22 12s0-3.5-.5-5a3 3 0 00-2-2C18 4.5 12 4.5 12 4.5s-6 0-7.5.5a3 3 0 00-2 2C2 8.5 2 12 2 12s0 3.5.5 5a3 3 0 002 2c1.5.5 7.5.5 7.5.5s6 0 7.5-.5a3 3 0 002-2c.5-1.5.5-5 .5-5z"/><path d="M10 9.5l5 2.5-5 2.5v-5z" fill="#0d0f13" stroke="none"/></svg></a>
+        <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M14 8h3V5h-3a4 4 0 00-4 4v2H7v3h3v7h3v-7h3l1-3h-4V9a1 1 0 011-1z"/></svg></a>
+      </div>
+    </div>
+    <div>
+      <h4>Catalogue</h4>
+      <a href="#catalogue">Datsun 240Z Parts</a>
+      <a href="#catalogue">Ford Escort Mk2</a>
+      <a href="#catalogue">VW T1 Bus</a>
+      <a href="#catalogue">New Arrivals</a>
+      <a href="#catalogue">OEM / ODM</a>
+    </div>
+    <div>
+      <h4>Company</h4>
+      <a href="#sema">About</a>
+      <a href="#sema">Quality Control</a>
+      <a href="#">Manufacturing</a>
+      <a href="#news">News &amp; Events</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <ul class="contact">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z"/></svg> +86 571 8888 6666</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M4 4h16v12H5.2L4 17.2V4z"/><path d="M8 21h8"/></svg> info@fairladyfactory.com</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 21s-7-6.5-7-11a7 7 0 0114 0c0 4.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg> No. 88 Xinglong Rd, Hangzhou</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="wrap">
+      <span>© 2026 Fairlady Factory Co., Ltd. All rights reserved.</span>
+      <span>240Z · ESCORT MK2 · T1 — SEMA GRADE</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ================= PRODUCT DATA ================= */
+const CATS = {
+  "Datsun 240Z (1969-73)": {id:"240Z", brand:"Datsun", note:"The original Fairlady Z. Steel body panels for full restorations."},
+  "Ford Escort Mk2 (1976)": {id:"ESCRT", brand:"Ford", note:"Rally-bred Mk2 Escort. Panels, doors, floors &amp; shell."},
+  "VW T1 Bus (classic)": {id:"T1", brand:"VW Type 1", note:"The microbus legend. Roof, tail panels &amp; body."}
+};
+const PRODUCTS = []; // filled from data below
+
+function modelLabel(p){
+  const cm=(p.car_models||"").toUpperCase();
+  if(cm.includes("240Z")||cm.includes("DATSUN")) return "Datsun 240Z (1969-73)";
+  if(cm.includes("T1")) return "VW T1 Bus (classic)";
+  if(cm.includes("ESCORT")) return "Ford Escort Mk2 (1976)";
+  return p.car_models||"";
+}
+function partLabel(name){
+  const n=name.toLowerCase();
+  if(/hood|bonnet/.test(n))return"Hood"; if(/door/.test(n))return"Door";
+  if(/fender|wing|wheel housing|wheelhouse/.test(n))return"Fender";
+  if(/bumper/.test(n))return"Bumper"; if(/floor|seat floor/.test(n))return"Floor Pan";
+  if(/frame rail|beam|stringer|longitudinal|chassis/.test(n))return"Frame/Chassis";
+  if(/tail panel|tailgate|tail gate|trunk|boot/.test(n))return"Tail Panel";
+  if(/cowl|dashboard/.test(n))return"Cowl"; if(/roof/.test(n))return"Roof";
+  if(/sill|rocker/.test(n))return"Sill"; if(/lamp|light/.test(n))return"Light";
+  if(/radiator|cooling|battery|holder/.test(n))return"Engine Bay";
+  if(/tank|fuel/.test(n))return"Fuel Tank"; if(/tray|seat/.test(n))return"Interior";
+  return"Body Panel";
+}
+
+/* ================= SVG PLACEHOLDER (fallback) ================= */
+function carSVG(seed, model){
+  const accent="#ff7a1a"; const h=[["#222a33","#161c24"],["#1e242d","#151a21"]][seed%2];
+  const s=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 180" width="320" height="180">
+  <defs><linearGradient id="b${seed}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="${h[0]}"/><stop offset="1" stop-color="${h[1]}"/></linearGradient>
+  <pattern id="g${seed}" width="22" height="22" patternUnits="userSpaceOnUse"><path d="M22 0H0V22" fill="none" stroke="#fff" stroke-opacity=".045"/></pattern></defs>
+  <rect width="320" height="180" fill="url(#b${seed})"/><rect width="320" height="180" fill="url(#g${seed})"/>
+  <line x1="0" y1="150" x2="320" y2="150" stroke="#fff" stroke-opacity=".09" stroke-width="2"/>
+  <path d="M48 128 C46 114 50 104 60 98 L92 92 C118 84 148 76 172 72 C186 74 196 80 204 90 L236 102 C256 106 270 114 280 126 C284 130 282 134 278 136 L252 136 C252 146 244 152 234 152 C224 152 216 146 216 136 L110 136 C110 146 102 152 92 152 C82 152 74 146 74 136 L52 136 C48 136 46 133 48 128 Z" fill="#0e1116"/>
+  <path d="M174 76 C186 78 196 84 202 92 L210 98 L172 99 Z" fill="#0a0c10"/>
+  <circle cx="88" cy="136" r="15" fill="#08090c"/><circle cx="88" cy="136" r="7" fill="#3b414b"/>
+  <circle cx="233" cy="136" r="15" fill="#08090c"/><circle cx="233" cy="136" r="7" fill="#3b414b"/>
+  <path d="M60 116 L236 116" stroke="${accent}" stroke-opacity=".28" stroke-width="2"/>
+  <text x="292" y="30" text-anchor="middle" font-family="Arial" font-size="13" font-weight="800" fill="${accent}">Z</text>
+  <text x="14" y="168" font-family="monospace" font-size="8.5" letter-spacing="2" fill="#fff" fill-opacity=".4">FAIRLADY FACTORY // ${model}</text>
+</svg>`;
+  return "data:image/svg+xml;charset=utf-8,"+encodeURIComponent(s);
+}
+
+/* ================= DATA EMBED ================= */
+window.RAW_PRODUCTS = [];  /* injected below */
+
+/* ================= STATE ================= */
+let state={model:"all",part:"all",search:"",sort:"featured"};
+
+function getFiltered(){
+  let items=PRODUCTS.slice();
+  if(state.model!=="all") items=items.filter(p=>modelLabel(p)===state.model);
+  if(state.part!=="all") items=items.filter(p=>partLabel(p.name)===state.part);
+  if(state.search){const q=state.search.toLowerCase();items=items.filter(p=>(p.name+" "+p.factory_code).toLowerCase().includes(q));}
+  const s=state.sort;
+  if(s==="price-asc")items.sort((a,b)=>a.price_cny-b.price_cny);
+  else if(s==="price-desc")items.sort((a,b)=>b.price_cny-a.price_cny);
+  else if(s==="name")items.sort((a,b)=>a.name.localeCompare(b.name));
+  else items.sort((a,b)=>(b.hot||0)-(a.hot||0)||a.id-b.id);
+  return items;
+}
+function fmt(n){return "¥"+n.toLocaleString("en-US");}
+function pickImg(p,idx=0){return (p.images&&p.images[idx])||"data:image/svg+xml,"+encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 10"><rect width="16" height="10" fill="#161c24"/></svg>`);}
+
+function render(){
+  const items=getFiltered();
+  document.getElementById("resultCount").innerHTML= items.length===PRODUCTS.length? `All <b>${items.length}</b> panels` : `<b>${items.length}</b> of ${PRODUCTS.length} panels`;
+
+  // chips
+  const models=["all",...Object.keys(CATS)];
+  document.getElementById("modelChips").innerHTML=models.map(m=>{
+    const cnt=m==="all"?PRODUCTS.length:PRODUCTS.filter(p=>modelLabel(p)===m).length;
+    return `<button class="chip ${state.model===m?'on':''}" data-model="${m}">${m==="all"?"All":(CATS[m]?.id||m)} · ${cnt}</button>`;
+  }).join("");
+  const parts=["all",...Array.from(new Set(PRODUCTS.map(p=>partLabel(p.name))))];
+  document.getElementById("partChips").innerHTML=parts.map(p=>{
+    const cnt=p==="all"?PRODUCTS.length:PRODUCTS.filter(x=>partLabel(x.name)===p).length;
+    return `<button class="chip ${state.part===p?'on':''}" data-part="${p}">${p} · ${cnt}</button>`;
+  }).join("");
+
+  const grid=document.getElementById("grid");
+  if(!items.length){grid.innerHTML=`<div class="empty"><b>No panels match</b>Try a different filter or clear your search.</div>`;return;}
+
+  grid.innerHTML=items.map((p,i)=>{
+    const mdl=modelLabel(p); const cat=CATS[mdl]||{}; const pl=partLabel(p.name);
+    const img=pickImg(p);
+    return `<article class="pcard" data-model="${mdl}">
+      <div class="media">
+        <img src="${img}" alt="${p.name}" loading="lazy" onerror="this.onerror=null;this.src='${carSVG(p.id,mdl)}'">
+        <span class="srno">${String(i+1).padStart(2,"0")}</span>
+        <span class="parttag">${pl}</span>
+      </div>
+      <div class="body">
+        <div class="meta"><span class="model">${cat.id||mdl}</span><span class="code">${pl}</span></div>
+        <h4>${p.name}</h4>
+        <div class="pcode">${p.factory_code||"—"}</div>
+        <div class="foot">
+          <span class="price"><small>from</small>${fmt(p.price_cny)}</span>
+          <button class="qbtn">Inquire</button>
+        </div>
+      </div>
+    </article>`;
+  }).join("");
+}
+
+function bind(){
+  document.getElementById("modelChips").addEventListener("click",e=>{
+    const b=e.target.closest("[data-model]"); if(!b)return; state.model=b.dataset.model; render();
+  });
+  document.getElementById("partChips").addEventListener("click",e=>{
+    const b=e.target.closest("[data-part]"); if(!b)return; state.part=b.dataset.part; render();
+  });
+  document.getElementById("sort").addEventListener("change",e=>{state.sort=e.target.value;render();});
+}
+
+/* ================= MODEL CARDS ================= */
+function renderModels(){
+  const total=PRODUCTS.length;
+  document.getElementById("modelCards").innerHTML=Object.entries(CATS).map(([name,cat],idx)=>{
+    const list=PRODUCTS.filter(p=>modelLabel(p)===name);
+    const parts=Array.from(new Set(list.map(p=>partLabel(p.name)))).slice(0,8);
+    const hero=list[0];
+    return `<a class="mcard" href="#catalogue" data-model-link="${name}">
+      <div class="ph"><img src="${pickImg(hero)}" alt="${name}" loading="lazy" onerror="this.onerror=null;this.src='${carSVG(hero.id,name)}'"><span class="no">${String(idx+1).padStart(2,"0")}</span></div>
+      <div class="body">
+        <div class="brandlbl">${cat.brand}</div>
+        <h3>${name}</h3>
+        <div class="count"><b>${list.length}</b><span>panels</span></div>
+        <div class="tags">${parts.map(p=>`<span>${p}</span>`).join("")}</div>
+      </div>
+    </a>`;
+  }).join("");
+  document.querySelectorAll("[data-model-link]").forEach(a=>{
+    a.addEventListener("click",()=>{const m=a.dataset.modelLink;state.model=m;state.part="all";render();});
+  });
+}
+
+/* ================= HERO + TICKER ================= */
+function renderHero(){
+  const first=PRODUCTS[0];
+  if(first){document.getElementById("heroImg").src=pickImg(first);document.getElementById("heroPart").textContent=first.factory_code||"—";}
+}
+
+/* ================= INIT ================= */
+function ready(fn){
+  if(document.readyState!=="loading"){fn();}
+  else{document.addEventListener("DOMContentLoaded",fn);}
+}
+ready(function init(){
+  // build PRODUCTS from embedded data (data script at end of body runs before DOMContentLoaded)
+  (window.RAW_PRODUCTS||[]).forEach(p=>PRODUCTS.push(p));
+  // mark a few as featured for the default sort
+  [0,3,6].forEach(i=>{if(PRODUCTS[i])PRODUCTS[i].hot=1;});
+  // duplicate ticker track for seamless loop
+  const t=document.getElementById("ticker"); t.innerHTML=t.innerHTML+t.innerHTML;
+  renderModels(); renderHero(); render(); bind();
+  // mobile nav
+  document.getElementById("burger").addEventListener("click",()=>{
+    const n=document.getElementById("nav");const o=n.classList.toggle("open");
+    document.getElementById("burger").setAttribute("aria-expanded",o);
+  });
+});
+</script>
+
+<!-- RAW PRODUCT DATA (classic catalogue - 80 products) -->
+<script>
+window.RAW_PRODUCTS = [{"id": 16019, "name": "HOOD(STEEL) COMPATIBLE WITH 1969-1973 NISSAN DATSUN 240Z", "description": "JAPANESE NISSAN DATSUN 240Z 1969-1973", "car_models": "JAPANESE - NISSAN - DATSUN 240Z", "factory_code": "SYC-NS42-04", "price_cny": 2217.6, "images": ["https://www.junchengauto.com/uploadfile/thumb/9ac99aa820030753f4101f35de5ce163/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/432bb7cac8a262cdea28cb357545d50a/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/c6fd6c7e4da27ed17b8f3b14d35aaeb6/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/96c17354424631e0b919564012db2624/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/b29135354047b4fa01f0f943737cc038/800x800_auto.jpg"]}, {"id": 19417, "name": "FRONT DOOR COMPATIBLE WITH 1969-1973 NISSAN DATSUN 260Z ,RH", "description": "JAPANESE NISSAN DATSUN 240Z", "car_models": "JAPANESE - NISSAN - DATSUN 240Z", "factory_code": "SYC-NS42-01R", "price_cny": 2620.8, "images": ["https://www.junchengauto.com/uploadfile/thumb/55250fc72f7d5e4c9c9108e38b1e94ec/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/428ccdcc8eaf556ba79854c22772135c/800x800_auto.jpg"]}, {"id": 19416, "name": "FRONT DOOR COMPATIBLE WITH 1969-1973 NISSAN DATSUN 260Z ,LH", "description": "JAPANESE NISSAN DATSUN 240Z", "car_models": "JAPANESE - NISSAN - DATSUN 240Z", "factory_code": "SYC-NS42-01L", "price_cny": 2620.8, "images": ["https://www.junchengauto.com/uploadfile/thumb/2131847b1d4cccf8c5e06f7bef69cf60/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/071767cf5f372135e407cc508808884b/800x800_auto.jpg"]}, {"id": 18524, "name": "UPPER COWL PANEL COMPATIBLE WITH 1969-1973 NISSAN DATSUN 240Z", "description": "JAPANESE NISSAN DATSUN 240Z 1969-1973", "car_models": "JAPANESE - NISSAN - DATSUN 240Z", "factory_code": "SYC-NS42-38", "price_cny": 1814.4, "images": ["https://www.junchengauto.com/uploadfile/thumb/1c0708af4331df1a35dfbdaf8e252d6e/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/9a5a511ca4f18a61719b12acf46f14c0/800x800_auto.jpg"]}, {"id": 18523, "name": "LOWER COWL REINFORCEMENT PANEL COMPATIBLE WITH 1969-1973 NISSAN DATSUN 240Z", "description": "JAPANESE NISSAN DATSUN 240Z 1969-1973", "car_models": "JAPANESE - NISSAN - DATSUN 240Z", "factory_code": "SYC-NS42-37", "price_cny": 1512.0, "images": ["https://www.junchengauto.com/uploadfile/thumb/2ab0ebde9cc0cd85fc47ce045d440caf/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/b3df435f52be5287d9ace3b28e2dcac9/800x800_auto.jpg"]}, {"id": 18522, "name": "SPARE TIRE TRAY COMPATIBLE WITH 1969-1973 NISSAN DATSUN 240Z", "description": "JAPANESE NISSAN DATSUN 240Z 1969-1973", "car_models": "JAPANESE - NISSAN - DATSUN 240Z", "factory_code": "SYC-NS42-33", "price_cny": 2116.8, "images": ["https://www.junchengauto.com/uploadfile/thumb/e8305639398f2f0c3d9cf3af2dd09aeb/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/1f910e9557e4fa6c8f9156e96a02d40a/800x800_auto.jpg"]}, {"id": 18521, "name": "FUEL TANK BOWL COMPATIBLE WITH 1969-1973 NISSAN DATSUN 240Z", "description": "JAPANESE NISSAN DATSUN 240Z 1969-1973", "car_models": "JAPANESE - NISSAN - DATSUN 240Z", "factory_code": "SYC-NS42-31-1", "price_cny": 504.0, "images": ["https://www.junchengauto.com/uploadfile/thumb/ae8ac5e9dffde5cc03562b4e13ac4394/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/9d5d697ea9ea179f7633708d5478c28f/800x800_auto.jpg"]}, {"id": 18520, "name": "REAR FRAME RAIL CROSSMEMBER COMPATIBLE WITH 1969-1973 NISSAN DATSUN 240Z", "description": "JAPANESE NISSAN DATSUN 240Z 1969-1973", "car_models": "JAPANESE - NISSAN - DATSUN 240Z", "factory_code": "SYC-NS42-29", "price_cny": 504.0, "images": ["https://www.junchengauto.com/uploadfile/thumb/576b9b484963479e14d56352f6b383ff/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/23e18616d10dc96e93805413b83969be/800x800_auto.jpg"]}, {"id": 18519, "name": "REAR FRAME RAIL COMPATIBLE WITH 1969-1973 NISSAN DATSUN 240Z, RH", "description": "JAPANESE NISSAN DATSUN 240Z 1969-1973", "car_models": "JAPANESE - NISSAN - DATSUN 240Z", "factory_code": "SYC-NS42-28R", "price_cny": 2419.2, "images": ["https://www.junchengauto.com/uploadfile/thumb/ed3551789fc0376ff8938b6827b16eae/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/7b1d3c756fcf7fa90af459bcde18b1d8/800x800_auto.jpg"]}, {"id": 18518, "name": "REAR FRAME RAIL COMPATIBLE WITH 1969-1973 NISSAN DATSUN 240Z, LH", "description": "JAPANESE NISSAN DATSUN 240Z 1969-1973", "car_models": "JAPANESE - NISSAN - DATSUN 240Z", "factory_code": "SYC-NS42-28L", "price_cny": 2419.2, "images": ["https://www.junchengauto.com/uploadfile/thumb/42751fb669b1fe8b899c5a70deb061d8/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/aa954eb9fc47e002ecbf68b60517a3de/800x800_auto.jpg"]}, {"id": 18517, "name": "FRONT FRAME RAIL COMPATIBLE WITH 1969-1973 NISSAN DATSUN 240Z, RH", "description": "JAPANESE NISSAN DATSUN 240Z 1969-1973", "car_models": "JAPANESE - NISSAN - DATSUN 240Z", "factory_code": "SYC-NS42-27R", "price_cny": 2620.8, "images": ["https://www.junchengauto.com/uploadfile/thumb/e834628a514af2290509181bf4348c6d/800x800_auto.jpg"]}, {"id": 18516, "name": "FRONT FRAME RAIL COMPATIBLE WITH 1969-1973 NISSAN DATSUN 240Z, LH", "description": "JAPANESE NISSAN DATSUN 240Z 1969-1973", "car_models": "JAPANESE - NISSAN - DATSUN 240Z", "factory_code": "SYC-NS42-27L", "price_cny": 2620.8, "images": ["https://www.junchengauto.com/uploadfile/thumb/ae4b023d09c50fbd267176ede23a3fa7/800x800_auto.jpg"]}, {"id": 18515, "name": "REAR SEAT BACK PANEL COMPATIBLE WITH 1969-1973 NISSAN DATSUN 240Z", "description": "JAPANESE NISSAN DATSUN 240Z 1969-1973", "car_models": "JAPANESE - NISSAN - DATSUN 240Z", "factory_code": "SYC-NS42-26", "price_cny": 1512.0, "images": ["https://www.junchengauto.com/uploadfile/thumb/a7290c5bd7bc2aaa7ea2b6c957ef639b/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/b667279b6400b4c05f3b5c4241e8bf7f/800x800_auto.jpg"]}, {"id": 18514, "name": "REAR FLOOR PANEL COMPATIBLE WITH 1969-1973 NISSAN DATSUN 240Z", "description": "JAPANESE NISSAN DATSUN 240Z 1969-1973", "car_models": "JAPANESE - NISSAN - DATSUN 240Z", "factory_code": "SYC-NS42-25-2", "price_cny": 2016.0, "images": ["https://www.junchengauto.com/uploadfile/thumb/decff3a1f694fccd108d4ce07b2587b5/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/e03814c1d555e06aa5d562d95ed29bd2/800x800_auto.jpg"]}, {"id": 18513, "name": "MIDDLE FLOOR PANEL COMPATIBLE WITH 1969-1973 NISSAN DATSUN 240Z", "description": "JAPANESE NISSAN DATSUN 240Z 1969-1973", "car_models": "JAPANESE - NISSAN - DATSUN 240Z", "factory_code": "SYC-NS42-25-1", "price_cny": 3024.0, "images": ["https://www.junchengauto.com/uploadfile/thumb/e58e29db292ff8dfbbe41afb846e469e/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/af988312978fad72c24e545c31bf8a49/800x800_auto.jpg"]}, {"id": 18512, "name": "FRONT FLOOR PANEL COMPATIBLE WITH 1969-1973 NISSAN DATSUN 240Z", "description": "JAPANESE NISSAN DATSUN 240Z 1969-1973", "car_models": "JAPANESE - NISSAN - DATSUN 240Z", "factory_code": "SYC-NS42-25", "price_cny": 5040.0, "images": ["https://www.junchengauto.com/uploadfile/thumb/0207ceaa30eeb7df0c51ed30959480ec/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/4ecb8876b622f561d9d13161071f518c/800x800_auto.jpg"]}, {"id": 18511, "name": "DASHBOARD SUPPORT COMPATIBLE WITH 1969-1973 NISSAN DATSUN 240Z", "description": "JAPANESE NISSAN DATSUN 240Z 1969-1973", "car_models": "JAPANESE - NISSAN - DATSUN 240Z", "factory_code": "SYC-NS42-24", "price_cny": 1512.0, "images": ["https://www.junchengauto.com/uploadfile/thumb/4371a529ba9a419a1dc903bcd8856251/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/56fe38b77cb4f52e8f2770e874f57875/800x800_auto.jpg"]}, {"id": 18510, "name": "FRONT SHOCK TOWER COMPATIBLE WITH 1969-1973 NISSAN DATSUN 240Z, RH", "description": "JAPANESE NISSAN DATSUN 240Z 1969-1973", "car_models": "JAPANESE - NISSAN - DATSUN 240Z", "factory_code": "SYC-NS42-22R", "price_cny": 1209.6, "images": ["https://www.junchengauto.com/uploadfile/thumb/13a69ec888022968c96b79f48f62fd2a/800x800_auto.jpg"]}, {"id": 18509, "name": "FRONT SHOCK TOWER COMPATIBLE WITH 1969-1973 NISSAN DATSUN 240Z, LH", "description": "JAPANESE NISSAN DATSUN 240Z 1969-1973", "car_models": "JAPANESE - NISSAN - DATSUN 240Z", "factory_code": "SYC-NS42-22L", "price_cny": 1209.6, "images": ["https://www.junchengauto.com/uploadfile/thumb/61905c201ff056edbc80a8e7d634d5c1/800x800_auto.jpg"]}, {"id": 18508, "name": "INNER LOWER SILL PANEL COMPATIBLE WITH 1969-1973 NISSAN DATSUN 240Z, RH", "description": "JAPANESE NISSAN DATSUN 240Z 1969-1973", "car_models": "JAPANESE - NISSAN - DATSUN 240Z", "factory_code": "SYC-NS42-10R-2", "price_cny": 806.4, "images": ["https://www.junchengauto.com/uploadfile/thumb/144679b5d1ddb8650c3155c645a1d976/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/4295cd213a56a1c6ec066caf5dd08f16/800x800_auto.jpg"]}, {"id": 18507, "name": "INNER LOWER SILL PANEL COMPATIBLE WITH 1969-1973 NISSAN DATSUN 240Z, LH", "description": "JAPANESE NISSAN DATSUN 240Z 1969-1973", "car_models": "JAPANESE - NISSAN - DATSUN 240Z", "factory_code": "SYC-NS42-10L-2", "price_cny": 806.4, "images": ["https://www.junchengauto.com/uploadfile/thumb/b57a35f9dda9f73ab2c04e1a6963c932/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/3066b11b58eb7fb925b67d25c54e3234/800x800_auto.jpg"]}, {"id": 18506, "name": "OUTER LOWER SILL PANEL COMPATIBLE WITH 1969-1973 NISSAN DATSUN 240Z, RH", "description": "JAPANESE NISSAN DATSUN 240Z 1969-1973", "car_models": "JAPANESE - NISSAN - DATSUN 240Z", "factory_code": "SYC-NS42-10R-1", "price_cny": 1209.6, "images": ["https://www.junchengauto.com/uploadfile/thumb/986e781559edbb32e805d4b135780812/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/ed21b54c417d6d8638aef8efc652fe37/800x800_auto.jpg"]}, {"id": 18505, "name": "OUTER LOWER SILL PANEL COMPATIBLE WITH 1969-1973 NISSAN DATSUN 240Z, LH", "description": "JAPANESE NISSAN DATSUN 240Z 1969-1973", "car_models": "JAPANESE - NISSAN - DATSUN 240Z", "factory_code": "SYC-NS42-10L-1", "price_cny": 1209.6, "images": ["https://www.junchengauto.com/uploadfile/thumb/c545987fb970f7b1f05c9f2a2f3340dd/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/59b6525364c77d1e6f9c79c53e387954/800x800_auto.jpg"]}, {"id": 18504, "name": "REAR FENDER INNER PANEL COMPATIBLE WITH 1969-1973 NISSAN DATSUN 240Z, RH", "description": "JAPANESE NISSAN DATSUN 240Z 1969-1973", "car_models": "JAPANESE - NISSAN - DATSUN 240Z", "factory_code": "SYC-NS42-06R-3", "price_cny": 907.2, "images": ["https://www.junchengauto.com/uploadfile/thumb/fb6cf395c453fdafb241d6d887e6aefe/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/2ab5569b4274a31c7f2b7c67cd9ba9e2/800x800_auto.jpg"]}, {"id": 18503, "name": "REAR FENDER INNER PANEL COMPATIBLE WITH 1969-1973 NISSAN DATSUN 240Z, LH", "description": "JAPANESE NISSAN DATSUN 240Z 1969-1973", "car_models": "JAPANESE - NISSAN - DATSUN 240Z", "factory_code": "SYC-NS42-06L-3", "price_cny": 907.2, "images": ["https://www.junchengauto.com/uploadfile/thumb/dbaebce9c842f6aa7482517597c75c8c/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/16a359f1f323bca3b0448e6c8ca5bec5/800x800_auto.jpg"]}, {"id": 18502, "name": "REAR WHEEL INNER PANEL COMPATIBLE WITH 1969-1973 NISSAN DATSUN 240Z, RH", "description": "JAPANESE NISSAN DATSUN 240Z 1969-1973", "car_models": "JAPANESE - NISSAN - DATSUN 240Z", "factory_code": "SYC-NS42-06R-2", "price_cny": 1209.6, "images": ["https://www.junchengauto.com/uploadfile/thumb/0df5627695c1aaf2a2be5c738a80f0c3/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/29430ba87f428a5f10b3a531b0761f15/800x800_auto.jpg"]}, {"id": 18501, "name": "REAR WHEEL INNER PANEL COMPATIBLE WITH 1969-1973 NISSAN DATSUN 240Z, LH", "description": "JAPANESE NISSAN DATSUN 240Z 1969-1973", "car_models": "JAPANESE - NISSAN - DATSUN 240Z", "factory_code": "SYC-NS42-06L-2", "price_cny": 1209.6, "images": ["https://www.junchengauto.com/uploadfile/thumb/effa3b908aaa9f8744b980829a6bfd15/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/e35adc826b021f91f72f183d1bb24773/800x800_auto.jpg"]}, {"id": 18500, "name": "REAR WHEEL OUTER PANEL COMPATIBLE WITH 1969-1973 NISSAN DATSUN 240Z, RH", "description": "JAPANESE NISSAN DATSUN 240Z 1969-1973", "car_models": "JAPANESE - NISSAN - DATSUN 240Z", "factory_code": "SYC-NS42-06R-1", "price_cny": 907.2, "images": []}, {"id": 18499, "name": "REAR WHEEL OUTER PANEL COMPATIBLE WITH 1969-1973 NISSAN DATSUN 240Z, LH", "description": "JAPANESE NISSAN DATSUN 240Z 1969-1973", "car_models": "JAPANESE - NISSAN - DATSUN 240Z", "factory_code": "SYC-NS42-06L-1", "price_cny": 907.2, "images": ["https://www.junchengauto.com/uploadfile/thumb/407688b935e4079fecd2b2daefb6432e/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/93aaa29263d4040a9099001cc887d333/800x800_auto.jpg"]}, {"id": 18496, "name": "FRONT WHEELHOUSE INNER REINFORCEMENT COMPATIBLE WITH 1969-1973 NISSAN DATSUN 240Z, RH", "description": "JAPANESE NISSAN DATSUN 240Z 1969-1973", "car_models": "JAPANESE - NISSAN - DATSUN 240Z", "factory_code": "SYC-NS42-05R-2", "price_cny": 604.8, "images": ["https://www.junchengauto.com/uploadfile/thumb/0f7a529e4a851625fee72161a84b4ca1/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/effbb64ff6c9b38c6fcb05185cd22fc3/800x800_auto.jpg"]}, {"id": 18495, "name": "FRONT WHEELHOUSE INNER REINFORCEMENT COMPATIBLE WITH 1969-1973 NISSAN DATSUN 240Z, LH", "description": "JAPANESE NISSAN DATSUN 240Z 1969-1973", "car_models": "JAPANESE - NISSAN - DATSUN 240Z", "factory_code": "SYC-NS42-05L-2", "price_cny": 604.8, "images": ["https://www.junchengauto.com/uploadfile/thumb/045723a2e194ae8b07890dace311b402/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/cb5f437833b580d047e697e150c45c57/800x800_auto.jpg"]}, {"id": 18494, "name": "FRONT WHEEL HOUSING COMPATIBLE WITH 1969-1973 NISSAN DATSUN 240Z, RH", "description": "JAPANESE NISSAN DATSUN 240Z 1969-1973", "car_models": "JAPANESE - NISSAN - DATSUN 240Z", "factory_code": "SYC-NS42-05R-1", "price_cny": 1713.6, "images": ["https://www.junchengauto.com/uploadfile/thumb/27e34e1093ba7e24075b9f5b25dcf5a7/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/b903548eebca1c3b8a3b81e5002f3490/800x800_auto.jpg"]}, {"id": 18493, "name": "FRONT WHEEL HOUSING COMPATIBLE WITH 1969-1973 NISSAN DATSUN 240Z, LH", "description": "JAPANESE NISSAN DATSUN 240Z 1969-1973", "car_models": "JAPANESE - NISSAN - DATSUN 240Z", "factory_code": "SYC-NS42-05L-1", "price_cny": 1713.6, "images": ["https://www.junchengauto.com/uploadfile/thumb/0ff9d78576b6c07d814ae5daab2e8d28/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/b9e702b9182246d9ad08bef0c2229f6b/800x800_auto.jpg"]}, {"id": 18492, "name": "HOOD INSPECTION LID PANEL COMPATIBLE WITH 1969-1973 NISSAN DATSUN 240Z, RH", "description": "JAPANESE NISSAN DATSUN 240Z 1969-1973", "car_models": "JAPANESE - NISSAN - DATSUN 240Z", "factory_code": "SYC-NS42-04R-1", "price_cny": 604.8, "images": ["https://www.junchengauto.com/uploadfile/thumb/5ffebde8e98ee4b9c98fcc1b30fffef6/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/4493a8d38776f690a0b661af37a30cfe/800x800_auto.jpg"]}, {"id": 18491, "name": "HOOD INSPECTION LID PANEL COMPATIBLE WITH 1969-1973 NISSAN DATSUN 240Z, LH", "description": "JAPANESE NISSAN DATSUN 240Z 1969-1973", "car_models": "JAPANESE - NISSAN - DATSUN 240Z", "factory_code": "SYC-NS42-04L-1", "price_cny": 604.8, "images": ["https://www.junchengauto.com/uploadfile/thumb/1dbdb6a977dd83e68f9078c05da938c6/800x800_auto.jpg"]}, {"id": 18498, "name": "FRONT INNER FENDER UPPER REINFORCEMENT PANEL COMPATIBLE WITH 1969-1973 NISSAN DATSUN 240Z, RH", "description": "JAPANESE NISSAN DATSUN 240Z 1969-1973", "car_models": "JAPANESE - NISSAN - DATSUN 240Z", "factory_code": "SYC-NS42-05L-3", "price_cny": 907.2, "images": ["https://www.junchengauto.com/uploadfile/thumb/306ee6a27d95b01dd69ee72920cf25ed/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/5ec11c9c51904e1a37a76d1acc14aa0f/800x800_auto.jpg"]}, {"id": 18497, "name": "FRONT INNER FENDER UPPER REINFORCEMENT PANEL COMPATIBLE WITH 1969-1973 NISSAN DATSUN 240Z, LH", "description": "JAPANESE NISSAN DATSUN 240Z 1969-1973", "car_models": "JAPANESE - NISSAN - DATSUN 240Z", "factory_code": "SYC-NS42-05L-3", "price_cny": 907.2, "images": ["https://www.junchengauto.com/uploadfile/thumb/dcd452092643b695257a74108459b8f3/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/2325577fcece567803aff8703a899116/800x800_auto.jpg"]}, {"id": 16327, "name": "TAIL PANEL COMPATIBLE WITH NISSAN DATSUN 240Z", "description": "JAPANESE NISSAN DATSUN 240Z", "car_models": "JAPANESE - NISSAN - DATSUN 240Z", "factory_code": "SYC-NS42-07-1", "price_cny": 316.8, "images": ["https://www.junchengauto.com/uploadfile/thumb/3743e016dfab77b9dcf96be466eb380f/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/6cc17b31acdbbccda130dafec001fe83/800x800_auto.jpg"]}, {"id": 16583, "name": "BATTERY HOLDER(STEEL) COMPATIBLE WITH 1969-1973 NISSAN DATSUN 240Z", "description": "JAPANESE NISSAN DATSUN 240Z 1969-1973", "car_models": "JAPANESE - NISSAN - DATSUN 240Z", "factory_code": "SYC-NS42-20", "price_cny": 432.0, "images": ["https://www.junchengauto.com/uploadfile/thumb/ed777f62b485b3975ac2d4ca644d619e/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/cd9015a609618aa8dcd0a7ff7941c475/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/d0241607c7a6d2011c767cfb35b8248d/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/4184dfd001b86c06f7f048b37a1aef50/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/396bfe5c1ae70eab245ac40824b412ec/800x800_auto.jpg"]}, {"id": 16582, "name": "REAR BUMPER COMPATIBLE WITH 1969-1973 NISSAN DATSUN 240Z", "description": "JAPANESE NISSAN DATSUN 240Z 1969-1973", "car_models": "JAPANESE - NISSAN - DATSUN 240Z", "factory_code": "SYC-NS42-19", "price_cny": 432.0, "images": ["https://www.junchengauto.com/uploadfile/thumb/07246f1add4748b2c3c031e2ec9262e0/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/0608bbe8fc09e0880e7d866d513c7c53/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/6b3a8f76ca145c9db850d0d318d381a6/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/73a3d9df0329c89f402ea26d5fd86da8/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/37b47bc2fe01ddcb1c4673a4419c7e13/800x800_auto.jpg"]}, {"id": 16581, "name": "FRONT BUMPER WITHOUT HOLES COMPATIBLE WITH 1969-1973 NISSAN DATSUN 240Z", "description": "JAPANESE NISSAN DATSUN 240Z 1969-1973", "car_models": "JAPANESE - NISSAN - DATSUN 240Z", "factory_code": "SYC-NS42-18(W/O)", "price_cny": 432.0, "images": ["https://www.junchengauto.com/uploadfile/thumb/d6139184e17e1909941ebb7bd7e4793d/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/50299aa592ccef6eaa8b603bc587192e/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/ce169541394fb573900fb1bf0e0e8d38/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/eee75242a3b87751a71bfb6ebce5cad0/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/8d7c30cf7b10b49f854c2a295a5c9413/800x800_auto.jpg"]}, {"id": 16580, "name": "FRONT BUMPER WITH HOLES COMPATIBLE WITH 1969-1973 NISSAN DATSUN 240Z", "description": "JAPANESE NISSAN DATSUN 240Z 1969-1973", "car_models": "JAPANESE - NISSAN - DATSUN 240Z", "factory_code": "SYC-NS42-18", "price_cny": 432.0, "images": ["https://www.junchengauto.com/uploadfile/thumb/b290a635641f585b3dd6b95fd42dc267/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/a2d336f869edef8188482ec691bb0a8d/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/f1ce00c04b55f6c2d825498cc86a296e/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/a6796dbc0e26e42775f1ab72b9fa1b3b/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/6320267b4965e7a50b2996cbd2d6c60f/800x800_auto.jpg"]}, {"id": 14057, "name": "TAILLIGHT OUT PANEL COMPATIBLE WITH 1969-1973 NISSAN DATSUN 240Z, LH", "description": "JAPANESE NISSAN DATSUN 240Z 1969-1973", "car_models": "JAPANESE - NISSAN - DATSUN 240Z", "factory_code": "SYC-NS42-16L", "price_cny": 432.0, "images": ["https://www.junchengauto.com/uploadfile/thumb/a43fdd75a502c38f7606ba323fdb0dc6/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/783efccaaa732b206beec7bf11885866/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/2d8b6c92b659a90e7ef716f811d8bba1/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/7d37e3cbff8e2f569ee74d9393c5a4a1/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/d63cc273ce120d9294c13a73a8aac01a/800x800_auto.jpg"]}, {"id": 14058, "name": "TAILLIGHT OUT PANEL COMPATIBLE WITH 1969-1973 NISSAN DATSUN 240Z, RH", "description": "JAPANESE NISSAN DATSUN 240Z 1969-1973", "car_models": "JAPANESE - NISSAN - DATSUN 240Z", "factory_code": "SYC-NS42-16R", "price_cny": 432.0, "images": ["https://www.junchengauto.com/uploadfile/thumb/271117ee875c80c7e9e912c23b6469a4/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/0c2bbe26550a66bdd0d4e74673f058aa/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/fdc9538552329dc72122809403b3238a/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/660724e3d5d5352745be10a2b89a1f84/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/cd49f7f7616e5661b97901dc688b4385/800x800_auto.jpg"]}, {"id": 16579, "name": "TAIL PANEL(STEEL) COMPATIBLE WITH 1969-1973 NISSAN DATSUN 240Z", "description": "JAPANESE NISSAN DATSUN 240Z 1969-1973", "car_models": "JAPANESE - NISSAN - DATSUN 240Z", "factory_code": "SYC-NS42-07", "price_cny": 316.8, "images": ["https://www.junchengauto.com/uploadfile/thumb/6774b084b4e8c3189c507afa8a861a2d/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/4ab7331b2a992a4c4fa54280bc7b50de/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/d66a1a0b677b9f693c310e2fb2748a54/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/77b7032b2e237ae78e3c520b9a0fd5fa/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/58464b55fde64f3c805bedd4ab5f6571/800x800_auto.jpg"]}, {"id": 16578, "name": "FRONT FENDER(STEEL) COMPATIBLE WITH 1969-1973 NISSAN DATSUN 240Z, RH", "description": "JAPANESE NISSAN DATSUN 240Z 1969-1973", "car_models": "JAPANESE - NISSAN - DATSUN 240Z", "factory_code": "SYC-NS42-05R", "price_cny": 720.0, "images": ["https://www.junchengauto.com/uploadfile/thumb/8cb958257e5a77381e730fc3ce4b8b32/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/6991aa40ef4b66fb372bd171ba9ad7f2/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/e0eda8d7f3e989da400a82781def8eac/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/be3811292c9b557753b303d5d194cf60/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/021abae3121d08e68ec099d8a2a7531d/800x800_auto.jpg"]}, {"id": 16577, "name": "FRONT FENDER(STEEL) COMPATIBLE WITH 1969-1973 NISSAN DATSUN 240Z, LH", "description": "JAPANESE NISSAN DATSUN 240Z 1969-1973", "car_models": "JAPANESE - NISSAN - DATSUN 240Z", "factory_code": "SYC-NS42-05L", "price_cny": 720.0, "images": ["https://www.junchengauto.com/uploadfile/thumb/6d4e59d5963286dfe2e696258bb10d1c/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/c12437a105d67a1e5fc09827346e2b49/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/ff97e486da08bfec774688ca3ef6ac42/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/f1ab4591a72bfca2da721ca61a6e9569/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/9628ca5c148265131af3b23839ff01e9/800x800_auto.jpg"]}, {"id": 16576, "name": "TAILGATE(STEEL) WITHOUT HOLE COMPATIBLE WITH 1969-1973 NISSAN DATSUN 240Z", "description": "JAPANESE NISSAN DATSUN 240Z 1969-1973", "car_models": "JAPANESE - NISSAN - DATSUN 240Z", "factory_code": "SYC-NS42-03(W/O)", "price_cny": 1728.0, "images": ["https://www.junchengauto.com/uploadfile/thumb/c933697660243185652bf51a75f9001a/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/6b59f92676fd007e9cc45d7f3fdd51f4/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/648e9e6a126696bd6f0eaf62b2b222b0/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/9e04a739ebd144fa784a334e6365bdc1/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/ef7db75e56ef7972af70c3900d2174fa/800x800_auto.jpg"]}, {"id": 16575, "name": "TAILGATE(STEEL) COMPATIBLE WITH 1969-1973 NISSAN DATSUN 240Z", "description": "JAPANESE NISSAN DATSUN 240Z 1969-1973", "car_models": "JAPANESE - NISSAN - DATSUN 240Z", "factory_code": "SYC-NS42-03", "price_cny": 1728.0, "images": ["https://www.junchengauto.com/uploadfile/thumb/137b7c791204ff4ccab2a7c63462123e/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/d0cea673a07dd4124d78ea52dda3fbf2/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/f0e74f09295841e202946abdc1829518/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/4c3c33b9115db0a66cd40a5465974ed6/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/fd5323cdf77a30f8ccc4f468be401563/800x800_auto.jpg"]}, {"id": 19383, "name": "ROOF PANEL COMPATIBLE WITH VOLKSWAGEN T1", "description": "GERMAN VOLKSWAGEN T1", "car_models": "GERMAN - VOLKSWAGEN - T1", "factory_code": "SYC-VW64-13", "price_cny": 2880.0, "images": ["https://www.junchengauto.com/uploadfile/thumb/317d5338c2dd1182bd094370a1121ee4/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/7398bb10be5667e31a146489d65cf5f6/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/41974ba26aec1036c02ecd1d7647c37d/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/ef152a79c2f6111858309f64e2d68ebd/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/a776d3cf1b33e6e4a43d00a11c2fa783/800x800_auto.jpg"]}, {"id": 19382, "name": "TAIL PANEL(DOWN) COMPATIBLE WITH VOLKSWAGEN T1", "description": "GERMAN VOLKSWAGEN T1", "car_models": "GERMAN - VOLKSWAGEN - T1", "factory_code": "SYC-VW64-07", "price_cny": 720.0, "images": ["https://www.junchengauto.com/uploadfile/thumb/4424206bb5705836a4bced27f9dfa350/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/7438845b5943e3d61cb4964f2bc218ad/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/fd446d68b55157f52b803e6b6ada53cc/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/d15505e6d277a01b10c86b9137f57d69/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/ff7c6b322d982194ef32e74820a3fff4/800x800_auto.jpg"]}, {"id": 19381, "name": "FRONT PANEL COMPATIBLE WITH VOLKSWAGEN T1", "description": "GERMAN VOLKSWAGEN T1", "car_models": "GERMAN - VOLKSWAGEN - T1", "factory_code": "SYC-VW64-04", "price_cny": 864.0, "images": ["https://www.junchengauto.com/uploadfile/thumb/96b7e445281a191b3922d814aae420ce/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/00cada81b307d5db4a1920b952e2137e/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/4158345f3687fcb84c1795cbf3c2e638/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/60b7f5df725c5166ab342f2eeb9244ad/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/d3edfaac7b134307771e928cc3293131/800x800_auto.jpg"]}, {"id": 19380, "name": "TAIL GATE(UP) COMPATIBLE WITH VOLKSWAGEN T1", "description": "GERMAN VOLKSWAGEN T1", "car_models": "GERMAN - VOLKSWAGEN - T1", "factory_code": "SYC-VW64-03", "price_cny": 864.0, "images": ["https://www.junchengauto.com/uploadfile/thumb/960b0b807b8d3bab15ebec50b4cefa7e/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/8a4032b5acf0ee3b57dd489ce6a672c1/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/bb64c74f463ee92e6f877c47a130d645/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/2d676aeab38fa3680f4369dbbd4f3e52/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/ee1d01930813d9f10858db96fd9d58b1/800x800_auto.jpg"]}, {"id": 18099, "name": "FRONT WALL INNER PANEL COMPATIBLE WITH 1976 FORD ESCORT MARK 2", "description": "AMERICAN FORD ESCORT MARK 2 1976", "car_models": "AMERICAN - FORD - ESCORT - ESCORT 1976", "factory_code": "SYC-FD13-80-005", "price_cny": 720.0, "images": ["https://www.junchengauto.com/uploadfile/thumb/2d5421eb54f4118e3b933e87baa6cc1c/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/68cee18772f6c46a1f5cfe4cda915574/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/c4f48c98a227f6dd2cdbd6a30dac6082/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/d1e40981bafcf2c263607fbc27e7a34e/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/42240455439aa23182bf604e3b202915/800x800_auto.jpg"]}, {"id": 18098, "name": "FRONT WALL 1# COMPATIBLE WITH 1976 FORD ESCORT MARK 2", "description": "AMERICAN FORD ESCORT MARK 2 1976", "car_models": "AMERICAN - FORD - ESCORT - ESCORT 1976", "factory_code": "SYC-FD13-80-002", "price_cny": 720.0, "images": ["https://www.junchengauto.com/uploadfile/thumb/f6f7d7b9a23cfd11cf728657591b2c02/800x800_auto.jpg"]}, {"id": 18097, "name": "WIPER REINFORCED PLATE BEAM COMPATIBLE WITH 1976 FORD ESCORT MARK 2", "description": "AMERICAN FORD ESCORT MARK 2 1976", "car_models": "AMERICAN - FORD - ESCORT - ESCORT 1976", "factory_code": "SYC-FD13-80-001", "price_cny": 288.0, "images": ["https://www.junchengauto.com/uploadfile/thumb/977726a65d86b7b7845159e7e9c19865/800x800_auto.jpg"]}, {"id": 18096, "name": "PANEL LIGHT FRAME UPPER BEAM COMPATIBLE WITH 1976 FORD ESCORT MARK 2", "description": "AMERICAN FORD ESCORT MARK 2 1976", "car_models": "AMERICAN - FORD - ESCORT - ESCORT 1976", "factory_code": "SYC-FD13-68-002", "price_cny": 288.0, "images": ["https://www.junchengauto.com/uploadfile/thumb/3635e869a5a13972dc2c7dcd0f80517d/800x800_auto.jpg"]}, {"id": 18095, "name": "PANEL LIGHT BOX COMPATIBLE WITH 1976 FORD ESCORT MARK 2", "description": "AMERICAN FORD ESCORT MARK 2 1976", "car_models": "AMERICAN - FORD - ESCORT - ESCORT 1976", "factory_code": "SYC-FD13-68-001", "price_cny": 720.0, "images": ["https://www.junchengauto.com/uploadfile/thumb/cc8e477e2930e6c7676fcc685ec2b32a/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/fd537f53e8f93d331a3cf6a0f5f1e748/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/5256481137675202c98385e8adaf711d/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/80baf0c8e70acc8c0a70d5befedf754f/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/2f201f1f5c6089c6ceb7086dd22d6447/800x800_auto.jpg"]}, {"id": 18094, "name": "SEAT FLOOR COMPATIBLE WITH 1976 FORD ESCORT MARK 2", "description": "AMERICAN FORD ESCORT MARK 2 1976", "car_models": "AMERICAN - FORD - ESCORT - ESCORT 1976", "factory_code": "SYC-FD13-41-001", "price_cny": 720.0, "images": ["https://www.junchengauto.com/uploadfile/thumb/f74c62f119a92803fb8773ad50e528c9/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/f27900bdac7a82614a4931f309704d69/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/4a9afaeb2472f426769ee7fe737f82ff/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/3fbe25e98c055443d115ff2eda3e76a7/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/1da76f4e60189995aa60cc1d19993ae9/800x800_auto.jpg"]}, {"id": 18093, "name": "WHEEL COVER COMPATIBLE WITH 1976 FORD ESCORT MARK 2 ,RH", "description": "AMERICAN FORD ESCORT MARK 2 1976", "car_models": "AMERICAN - FORD - ESCORT - ESCORT 1976", "factory_code": "SYC-FD13-28R", "price_cny": 576.0, "images": ["https://www.junchengauto.com/uploadfile/thumb/eba9f1a976a8f27e7e0d3a428571b9bb/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/1ba11d583c8cec68cddb9d103387ffbe/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/f4a5d99730ab736c45838ef0ed2fcd37/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/1c931a87157b62c0e7412bcb263eb6ac/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/2aa40209d6464b0c08149542a21096c0/800x800_auto.jpg"]}, {"id": 18092, "name": "WHEEL COVER COMPATIBLE WITH 1976 FORD ESCORT MARK 2 ,LH", "description": "AMERICAN FORD ESCORT MARK 2 1976", "car_models": "AMERICAN - FORD - ESCORT - ESCORT 1976", "factory_code": "SYC-FD13-28L", "price_cny": 576.0, "images": ["https://www.junchengauto.com/uploadfile/thumb/e5b565ee90394bde9f504d9c6ef027d1/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/f81e312ca3fbd61d515bb65deac0259c/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/f8936fbd065f5b9fdb3149eaba9665df/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/dbea0e6a82f856ae53f9c827665af265/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/e8d6b501bfa2981bd4c4a7a2eb822b28/800x800_auto.jpg"]}, {"id": 18091, "name": "LONGITUDINAL BEAM 1# COMPATIBLE WITH 1976 FORD ESCORT MARK 2 ,LH", "description": "AMERICAN FORD ESCORT MARK 2 1976", "car_models": "AMERICAN - FORD - ESCORT - ESCORT 1976", "factory_code": "SYC-FD13-14L-009", "price_cny": 288.0, "images": ["https://www.junchengauto.com/uploadfile/thumb/0c20a73103a93557dfe66286add0e8a1/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/443615ca6b28402752eb646cc6f51ae7/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/a55ab2526717b7d51f169efdb32d0b41/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/1baba510b5b8db4473eb73e7b9784b20/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/51d7eab534fbc97552ecb39280168cc5/800x800_auto.jpg"]}, {"id": 18090, "name": "STRINGER MIDDLE CONNECTOR LEFT COMPATIBLE WITH 1976 FORD ESCORT MARK 2 ,RH", "description": "AMERICAN FORD ESCORT MARK 2 1976", "car_models": "AMERICAN - FORD - ESCORT - ESCORT 1976", "factory_code": "SYC-FD13-14R-005", "price_cny": 288.0, "images": ["https://www.junchengauto.com/uploadfile/thumb/1e0ed954fe9baa5600b32dd429c159da/800x800_auto.jpg"]}, {"id": 18089, "name": "STRINGER MIDDLE CONNECTOR LEFT COMPATIBLE WITH 1976 FORD ESCORT MARK 2 ,LH", "description": "AMERICAN FORD ESCORT MARK 2 1976", "car_models": "AMERICAN - FORD - ESCORT - ESCORT 1976", "factory_code": "SYC-FD13-14L-005", "price_cny": 288.0, "images": ["https://www.junchengauto.com/uploadfile/thumb/252a3893179658de41f437d975468205/800x800_auto.jpg"]}, {"id": 18088, "name": "BACK SURFACE 3# COMPATIBLE WITH 1976 FORD ESCORT MARK 2 ,LH", "description": "AMERICAN FORD ESCORT MARK 2 1976", "car_models": "AMERICAN - FORD - ESCORT - ESCORT 1976", "factory_code": "SYC-FD13-14L-001", "price_cny": 504.0, "images": ["https://www.junchengauto.com/uploadfile/thumb/9545ca5aa0f8ab89c566464be34e091a/800x800_auto.jpg"]}, {"id": 18087, "name": "TOP COVER MIDDLE BEAM COMPATIBLE WITH 1976 FORD ESCORT MARK 2", "description": "AMERICAN FORD ESCORT MARK 2 1976", "car_models": "AMERICAN - FORD - ESCORT - ESCORT 1976", "factory_code": "SYC-FD13-13-003", "price_cny": 288.0, "images": ["https://www.junchengauto.com/uploadfile/thumb/c2090502cd75f701449abad130cce798/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/b89bd6465f1baed1810a82e1d5138f52/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/27ac0ca86e06d1822d546ed038ea33ae/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/f3535a949e0637d4894131d516649a5f/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/41f59478b82ac344e8f8e229d8e080f3/800x800_auto.jpg"]}, {"id": 18086, "name": "REAR PANEL COMPATIBLE WITH 1976 FORD ESCORT MARK 2, (STEEL)", "description": "AMERICAN FORD ESCORT MARK 2 1976", "car_models": "AMERICAN - FORD - ESCORT - ESCORT 1976", "factory_code": "SYC-FD13-07-001", "price_cny": 1008.0, "images": ["https://www.junchengauto.com/uploadfile/thumb/37eda6fc55724f196e07626ad6bf49c8/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/6dd2f7fb9018bfcd8c3be1f8e65224ae/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/d467193baadf3ec5f1d18d0757525712/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/4d2fe2e8601f7a8018594d98f28706f2/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/e52917b6014799a313777d99a977c518/800x800_auto.jpg"]}, {"id": 18085, "name": "FRONT FENDER COMPATIBLE WITH 1976 FORD ESCORT MARK 2 ,RH", "description": "AMERICAN FORD ESCORT MARK 2 1976", "car_models": "AMERICAN - FORD - ESCORT - ESCORT 1976", "factory_code": "SYC-FD13-05R", "oem": "PJX7BA16008AD", "price_cny": 432.0, "images": ["https://www.junchengauto.com/uploadfile/thumb/c2148796071914983ed6b6e9dbbff735/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/147e141ec1cb3a343069bd70601b676c/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/fc75bd9622425bbc421653770069faf5/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/5f8de67cee1da1d3e613285a57f69f4f/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/1189a8d303af41be1c476cd158fc4301/800x800_auto.jpg"]}, {"id": 18084, "name": "FRONT FENDER COMPATIBLE WITH 1976 FORD ESCORT MARK 2 ,LH", "description": "AMERICAN FORD ESCORT MARK 2 1976", "car_models": "AMERICAN - FORD - ESCORT - ESCORT 1976", "factory_code": "SYC-FD13-05L", "oem": "PJX7BA16009AD", "price_cny": 432.0, "images": ["https://www.junchengauto.com/uploadfile/thumb/309e3fb6c98132ad9065bbadfe5c2319/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/afd2cd234908613bcd2de4dfc1f06ce0/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/45be6167a632305cbe39aad807215562/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/0d027acefa6f870bd312eed9df6d48ff/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/c9db91a33f7c9b95eeb17aa5d3cdef5c/800x800_auto.jpg"]}, {"id": 18083, "name": "HOOD COMPATIBLE WITH 1976 FORD ESCORT MARK 2", "description": "AMERICAN FORD ESCORT MARK 2 1976", "car_models": "AMERICAN - FORD - ESCORT - ESCORT 1976", "factory_code": "SYC-FD13-04", "price_cny": 720.0, "images": ["https://www.junchengauto.com/uploadfile/thumb/8c2a967483e45118cda7e825e347ef88/800x800_auto.jpg"]}, {"id": 18082, "name": "TRUNK LID COMPATIBLE WITH 1976 FORD ESCORT MARK 2, (STEEL)", "description": "AMERICAN FORD ESCORT MARK 2 1976", "car_models": "AMERICAN - FORD - ESCORT - ESCORT 1976", "factory_code": "SYC-FD13-03", "price_cny": 720.0, "images": ["https://www.junchengauto.com/uploadfile/thumb/0a175e9ffb2cc47dffead9c1cf4eb9fe/800x800_auto.jpg", "https://www.junchengauto.com/uploadfile/thumb/573c979abe8d189246cab7ef50685f0b/800x800_auto.jpg"]}, {"id": 18081, "name": "FRONT DOOR COMPATIBLE WITH 1976 FORD ESCORT MARK 2 ,RH", "description": "AMERICAN FORD ESCORT MARK 2 1976", "car_models": "AMERICAN - FORD - ESCORT - ESCORT 1976", "factory_code": "SYC-FD13-01R", "oem": "PJX79A20124AB", "price_cny": 864.0, "images": ["https://www.junchengauto.com/uploadfile/thumb/c378c4854ec370c1c8438f72e19b7170/800x800_auto.jpg"]}, {"id": 18080, "name": "FRONT DOOR COMPATIBLE WITH 1976 FORD ESCORT MARK 2 ,LH", "description": "AMERICAN FORD ESCORT MARK 2 1976", "car_models": "AMERICAN - FORD - ESCORT - ESCORT 1976", "factory_code": "SYC-FD13-01L", "oem": "PJX79A20125AB", "price_cny": 864.0, "images": ["https://www.junchengauto.com/uploadfile/thumb/159f02cdca45838bdfe5ecdeadb520be/800x800_auto.jpg"]}, {"id": 18079, "name": "CABIN COMPATIBLE WITH 1976 FORD ESCORT CLASSIC SPARE PARTS", "description": "AMERICAN FORD ESCORT  MARK 2 1976", "car_models": "AMERICAN - FORD - ESCORT - ESCORT 1976", "factory_code": "SYC-FD13-00", "price_cny": 15120.0, "images": ["https://www.junchengauto.com/uploadfile/thumb/3201dbdb788243afa7b24fb5311f8dfc/800x800_auto.jpg"]}, {"id": 16112, "name": "SIDE OUTER PANEL COMPATIBLE WITH 1976 FORD ESCORT, RH", "description": "AMERICAN FORD ESCORT 1976", "car_models": "AMERICAN - FORD - ESCORT - ESCORT 1976", "factory_code": "SYC-FD13-12R", "price_cny": 1440.0, "images": ["https://www.junchengauto.com/uploadfile/thumb/1acd383fa742f09b2222f5f08b1e57f0/800x800_auto.jpg"]}, {"id": 16111, "name": "SIDE OUTER PANEL COMPATIBLE WITH 1976 FORD ESCORT, LH", "description": "AMERICAN FORD ESCORT 1976", "car_models": "AMERICAN - FORD - ESCORT - ESCORT 1976", "factory_code": "SYC-FD13-12L", "price_cny": 1368.0, "images": ["https://www.junchengauto.com/uploadfile/thumb/f66d6e86ad128c934d9f1c3ea9d19155/800x800_auto.jpg"]}, {"id": 16110, "name": "FENDER INNER SUPPORT 2#  COMPATIBLE WITH 1976 FORD ESCORT, LH", "description": "AMERICAN FORD ESCORT 1976", "car_models": "AMERICAN - FORD - ESCORT - ESCORT 1976", "factory_code": "SYC-FD13-05L-003", "price_cny": 432.0, "images": ["https://www.junchengauto.com/uploadfile/thumb/e7b966126309c9707f07563d62d14f0c/800x800_auto.jpg"]}, {"id": 16109, "name": "FENDER INNER SUPPORT 1#  COMPATIBLE WITH 1976 FORD ESCORT, LH", "description": "AMERICAN FORD ESCORT 1976", "car_models": "AMERICAN - FORD - ESCORT - ESCORT 1976", "factory_code": "SYC-FD13-05L-002L", "price_cny": 432.0, "images": ["https://www.junchengauto.com/uploadfile/thumb/71103463cca58f868394462cc92e854d/800x800_auto.jpg"]}, {"id": 16108, "name": "FENDER INNER SUPPORT 1#  COMPATIBLE WITH 1976 FORD ESCORT, RH", "description": "AMERICAN FORD ESCORT 1976", "car_models": "AMERICAN - FORD - ESCORT - ESCORT 1976", "factory_code": "SYC-FD13-05-002R", "price_cny": 432.0, "images": ["https://www.junchengauto.com/uploadfile/thumb/d0310f4638328873adcc399bca91eb4e/800x800_auto.jpg"]}, {"id": 16114, "name": "TAIL PANEL COMPATIBLE WITH JEEP JT", "description": "AMERICAN FORD ESCORT 1976", "car_models": "AMERICAN - FORD - ESCORT - ESCORT 1976", "factory_code": "SY-JP02-03", "price_cny": 1872.0, "images": ["https://www.junchengauto.com/uploadfile/thumb/50ae0ce8c27842532dcd83c3678302bc/800x800_auto.jpg"]}];
+</script>
+</body>
+</html>
